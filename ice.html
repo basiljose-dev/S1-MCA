@@ -1,0 +1,468 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream World</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff8f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b9d, #ff9a76);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        header h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #444;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ff4f8b;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            color: #ff4f8b;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        .hero button {
+            margin-top: 30px;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            background: #ff4f8b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background: #e63873;
+        }
+
+        /* Common section */
+        section {
+            padding: 60px 8%;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        /* Brand Cards */
+        .brands {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 20px 0 10px;
+            color: #ff4f8b;
+        }
+
+        .card p {
+            padding: 0 20px 20px;
+            color: #666;
+        }
+
+        .button {
+            display: inline-block;
+            margin-bottom: 25px;
+            padding: 10px 22px;
+            background: #ff4f8b;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        .button:hover {
+            background: #e63873;
+        }
+
+        /* Flavors */
+        .flavors {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .flavor {
+            background: white;
+            text-align: center;
+            padding: 30px 15px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .flavor:hover {
+            transform: scale(1.05);
+        }
+
+        .flavor span {
+            font-size: 45px;
+        }
+
+        .flavor h3 {
+            margin: 15px 0 8px;
+        }
+
+        .flavor p {
+            color: #777;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        th {
+            background: #ff4f8b;
+            color: white;
+            padding: 18px;
+        }
+
+        td {
+            padding: 16px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover {
+            background: #fff0f5;
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, #ff6b9d, #ff9a76);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .contact h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .brands {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .flavors {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav a {
+                display: inline-block;
+                margin: 8px;
+            }
+
+            .brands,
+            .flavors {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>🍦 ICE CREAM WORLD 🍨</h1>
+        <p><i>Where every scoop brings happiness!</i></p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#brands">Brands</a>
+        <a href="#flavors">Flavors</a>
+        <a href="#details">Prices</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero" id="home">
+        <h2>Welcome to Ice Cream World</h2>
+
+        <p>
+            Discover delicious, creamy and refreshing ice creams.
+            From classic vanilla to tropical mango, there is a perfect
+            scoop waiting for everyone.
+        </p>
+
+        <button>Explore Flavors 🍨</button>
+    </div>
+
+    <!-- Brands -->
+    <section id="brands">
+
+        <h2 class="title">🍨 Popular Brands</h2>
+
+        <div class="brands">
+
+            <div class="card">
+                <img src="lazza.jpg" alt="Lazza Ice Cream">
+
+                <h3>Lazza</h3>
+
+                <p>
+                    Delicious and creamy ice creams available
+                    in exciting flavors.
+                </p>
+
+                <a href="#" class="button">Explore</a>
+            </div>
+
+            <div class="card">
+                <img src="images.jpg" alt="Baskin Robbins Ice Cream">
+
+                <h3>Baskin-Robbins</h3>
+
+                <p>
+                    A colorful collection of delicious
+                    ice cream flavors.
+                </p>
+
+                <a href="#" class="button">Explore</a>
+            </div>
+
+            <div class="card">
+                <img src="images1.jpg" alt="Amul Ice Cream">
+
+                <h3>Amul</h3>
+
+                <p>
+                    Enjoy tasty dairy products and
+                    delicious ice creams.
+                </p>
+
+                <a href="#" class="button">Explore</a>
+            </div>
+
+            <div class="card">
+                <img src="images2.jpg" alt="Uncle John's Ice Cream">
+
+                <h3>Uncle John's</h3>
+
+                <p>
+                    Refreshing and creamy ice cream
+                    for every occasion.
+                </p>
+
+                <a href="#" class="button">Explore</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Flavors -->
+    <section id="flavors">
+
+        <h2 class="title">🍓 Our Favorite Flavors</h2>
+
+        <div class="flavors">
+
+            <div class="flavor">
+                <span>🍓</span>
+                <h3>Strawberry</h3>
+                <p>Sweet & Fruity</p>
+            </div>
+
+            <div class="flavor">
+                <span>🍫</span>
+                <h3>Chocolate</h3>
+                <p>Rich & Creamy</p>
+            </div>
+
+            <div class="flavor">
+                <span>🍦</span>
+                <h3>Vanilla</h3>
+                <p>Classic & Smooth</p>
+            </div>
+
+            <div class="flavor">
+                <span>🥭</span>
+                <h3>Mango</h3>
+                <p>Fresh & Tropical</p>
+            </div>
+
+            <div class="flavor">
+                <span>🍪</span>
+                <h3>Cookies</h3>
+                <p>Crunchy & Delicious</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Details -->
+    <section id="details">
+
+        <h2 class="title">🍨 Ice Cream Details</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <tr>
+                    <th>Ice Cream</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+
+                <tr>
+                    <td>Baskin-Robbins</td>
+                    <td>2 kg</td>
+                    <td>₹2200</td>
+                </tr>
+
+                <tr>
+                    <td>Lazza</td>
+                    <td>4 kg</td>
+                    <td>₹6500</td>
+                </tr>
+
+                <tr>
+                    <td>Mercely</td>
+                    <td>1 kg</td>
+                    <td>₹300</td>
+                </tr>
+
+            </table>
+
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <div class="contact" id="contact">
+
+        <h2>🍦 Stay Sweet!</h2>
+
+        <p>
+            Contact us: icecream@example.com
+        </p>
+
+        <p>
+            Follow us for more delicious updates ❤️
+        </p>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Ice Cream World | Made with 🍨 and ❤️</p>
+    </footer>
+
+</body>
+</html>

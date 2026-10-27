@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Background Changer</title>
+
+    <style>
+        body {
+            background-color: white;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            transition: background-color 0.5s ease,
+                        background-image 0.5s ease;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="changeColor()">Change Color</button>
+    <button onclick="changeBackgroundImage()">Change Background Image</button>
+    <button onclick="resetBackground()">Reset to Normal</button>
+
+    <script>
+        const originalColor = "white";
+        const originalImage = "";
+
+        // Different background colors
+        const colors = [
+            "red",
+            "blue",
+            "green",
+            "yellow",
+            "purple",
+            "orange",
+            "pink"
+        ];
+
+        // Different background images
+        const images = [
+            "https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-122784728/122784728.jpg",
+
+            "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80",
+
+            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80",
+
+            "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=80",
+
+            "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80"
+        ];
+
+        // Change to a random color
+        function changeColor() {
+
+            const randomIndex =
+                Math.floor(Math.random() * colors.length);
+
+            document.body.style.backgroundColor =
+                colors[randomIndex];
+
+            document.body.style.backgroundImage = "";
+        }
+
+        // Change to a random image
+        function changeBackgroundImage() {
+
+            const randomIndex =
+                Math.floor(Math.random() * images.length);
+
+            document.body.style.backgroundImage =
+                `url('${images[randomIndex]}')`;
+
+            document.body.style.backgroundColor = "";
+        }
+
+        // Reset background
+        function resetBackground() {
+
+            document.body.style.backgroundColor =
+                originalColor;
+
+            document.body.style.backgroundImage =
+                originalImage;
+        }
+    </script>
+
+</body>
+</html>
